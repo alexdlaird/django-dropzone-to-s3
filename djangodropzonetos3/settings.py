@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -30,21 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
+    'dropzone',
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
@@ -76,8 +70,22 @@ USE_L10N = True
 
 USE_TZ = True
 
+SITE_TITLE = "My S3 Bucket Uploader"
+CONTACT_EMAIL = 'user@myserver.com'
+# If ANNONYMOUS_UPLOADS is true, users will be prompted for the SHARED_KEY prior to being allowed to upload
+ALLOWED_FILE_MIME_TYPES = ['image/jpeg', 'image/png', 'image/gif']
+ANNONYMOUS_UPLOADS = False
+SHARED_KEY = 'shared_key'
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/dev/howto/static-files/
+# Modify these variables to configure the connection to your AWS S3 bucket
+AWS_ACCESS_KEY_ID = 'aws_access_key'
+AWS_SECRET_ACCESS_KEY = 'aws_secret_access_key'
+AWS_STORAGE_BUCKET_NAME = 'aws-storage-bucket-name'
+AWS_QUERYSTRING_AUTH = False
 
+DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
+S3_URL = 'https://%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 STATIC_URL = '/static/'
+MEDIA_DIRECTORY = '/media/'
+MEDIA_ROOT = 'media/'
+MEDIA_URL = S3_URL + MEDIA_DIRECTORY

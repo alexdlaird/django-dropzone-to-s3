@@ -1,0 +1,101 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% block title %}{{ SITE_TITLE }}{% endblock %}</title>
+
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="{% static "js/dropzone.js" %}"></script>
+    <link rel="stylesheet" href="{% static "css/custom.css" %}">
+</head>
+<body>
+<div class="container to-hide" id="container">
+    {% csrf_token %}
+
+    <div class="col-sm-12"><h1>{{ SITE_TITLE }}</h1></div>
+
+    <div class="col-sm-12">
+        <blockquote>
+            <p>Drop files anywhere on this page to add them to the list of files to upload. When you're ready, click
+                "Start upload" to upload your files.</p>
+        </blockquote>
+    </div>
+
+    <br>
+
+    <div id="actions" class="row">
+
+        <div class="col-lg-7">
+            <!-- The fileinput-button span is used to style the file input field as button -->
+        <span class="btn btn-success fileinput-button">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span>Add files...</span>
+        </span>
+            <button type="submit" class="btn btn-primary start">
+                <i class="glyphicon glyphicon-upload"></i>
+                <span>Start upload</span>
+            </button>
+            <button type="reset" class="btn btn-warning cancel">
+                <i class="glyphicon glyphicon-ban-circle"></i>
+                <span>Cancel upload</span>
+            </button>
+        </div>
+
+        <div class="col-lg-5">
+            <!-- The global file processing state -->
+        <span class="fileupload-process">
+          <div id="total-progress" class="progress progress-striped active" role="progressbar" aria-valuemin="0"
+               aria-valuemax="100" aria-valuenow="0">
+              <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+          </div>
+        </span>
+        </div>
+
+    </div>
+
+    <div class="table table-striped" class="files" id="previews">
+
+        <div id="template" class="file-row">
+            <!-- This is used as the file preview template -->
+            <div>
+                <span class="preview"><img data-dz-thumbnail/></span>
+            </div>
+            <div>
+                <p class="name" data-dz-name></p>
+                <strong class="error text-danger" data-dz-errormessage></strong>
+            </div>
+            <div>
+                <p class="size" data-dz-size></p>
+
+                <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                     aria-valuenow="0">
+                    <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-primary start">
+                    <i class="glyphicon glyphicon-upload"></i>
+                    <span>Start</span>
+                </button>
+                <button data-dz-remove class="btn btn-warning cancel">
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <span>Cancel</span>
+                </button>
+                <button data-dz-remove class="btn btn-danger delete">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span>Delete</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="{% static "js/custom.js" %}"></script>
+</body>
+</html>
