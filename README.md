@@ -1,4 +1,4 @@
 Django Dropzone to S3
 =====================
 
-A simple Django application to upload files to an S3 bucket
+A simple Django application that file uploads directly to an Amazon S3 bucket.

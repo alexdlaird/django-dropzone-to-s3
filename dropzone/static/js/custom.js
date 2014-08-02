@@ -55,36 +55,37 @@ document.querySelector("#actions .cancel").onclick = function () {
 };
 
 $(document).ready(function () {
+    // Once the page is loaded, we need to poll the server for settings
     $.when($.ajax({
         type: 'GET',
         url: '/get_settings'
     })).then(function (data) {
-            json = $.parseJSON(data);
-            myDropzone.options.acceptedFiles = json.ALLOWED_FILE_MIME_TYPES.join();
-            document.annonymousUploads = json.ANNONYMOUS_UPLOADS;
+        json = $.parseJSON(data);
+        myDropzone.options.acceptedFiles = json.ALLOWED_FILE_MIME_TYPES.join();
+        document.annonymousUploads = json.ANNONYMOUS_UPLOADS;
 
-            if (!json.ANNONYMOUS_UPLOADS) {
-                document.shared_key = prompt("Enter the shared key to upload to this server:\n(If you do not have the shared key, contact " + json.CONTACT_EMAIL + ")");
+        // If annonymous uploads are not allowed, prompt the user for the shared key
+        if (!json.ANNONYMOUS_UPLOADS) {
+            document.shared_key = prompt("Enter the shared key to upload to this server:\n(If you do not have the shared key, contact " + json.CONTACT_EMAIL + ")");
 
-                $.when($.ajax({
-                    data: {'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(), 'shared_key': document.shared_key},
-                    statusCode: {
-                        400: function () {
-                            // If we get a BadResponse, our shared key was incorrect, so reload the page to reprompt
-                            location.reload();
-                        }
-                    },
-                    type: 'POST',
-                    url: '/check_shared_key'
-                })).then(function (data) {
-                    // If we get a clean response, the shared key was correct, so show the form
-                    $("#container").slideDown("fast");
-                });
-            }
-            else {
+            $.when($.ajax({
+                data: {'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(), 'shared_key': document.shared_key},
+                statusCode: {
+                    400: function () {
+                        // If we get a BadResponse, our shared key was incorrect, so reload the page to reprompt
+                        location.reload();
+                    }
+                },
+                type: 'POST',
+                url: '/check_shared_key'
+            })).then(function (data) {
+                // If we get a clean response, the shared key was correct, so show the form
                 $("#container").slideDown("fast");
-            }
+            });
         }
-    )
-    ;
+        else {
+            // If annonymous uploads are allowed
+            $("#container").slideDown("fast");
+        }
+    });
 });
