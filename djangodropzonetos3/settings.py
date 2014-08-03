@@ -73,7 +73,7 @@ USE_TZ = True
 SITE_TITLE = "My S3 Bucket Uploader"
 CONTACT_EMAIL = 'user@myserver.com'
 # If ANNONYMOUS_UPLOADS is true, users will be prompted for the SHARED_KEY prior to being allowed to upload
-ALLOWED_FILE_MIME_TYPES = ['image/jpeg', 'image/png', 'image/gif']
+ALLOWED_FILE_MIME_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'video/mpeg', 'video/mp4', 'video/quicktime']
 ANNONYMOUS_UPLOADS = False
 SHARED_KEY = 'shared_key'
 
