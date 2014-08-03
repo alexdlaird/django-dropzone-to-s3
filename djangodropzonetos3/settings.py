@@ -70,6 +70,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Configure the application with variables below
 SITE_TITLE = "My S3 Bucket Uploader"
 CONTACT_EMAIL = 'user@myserver.com'
 # If ANNONYMOUS_UPLOADS is true, users will be prompted for the SHARED_KEY prior to being allowed to upload
@@ -81,8 +82,8 @@ SHARED_KEY = 'shared_key'
 AWS_ACCESS_KEY_ID = 'aws_access_key'
 AWS_SECRET_ACCESS_KEY = 'aws_secret_access_key'
 AWS_STORAGE_BUCKET_NAME = 'aws-storage-bucket-name'
-AWS_QUERYSTRING_AUTH = False
 
+AWS_QUERYSTRING_AUTH = False
 DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
 S3_URL = 'https://%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 STATIC_URL = '/static/'

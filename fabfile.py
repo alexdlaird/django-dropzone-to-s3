@@ -15,6 +15,7 @@ from fabric.state import env
 from fabric.network import ssh
 
 
+# Modify these variables to configure the server to which you're deploying
 PROJECT_NAME = 'django-dropzone-to-s3'
 HOSTNAME = 'myserver.com'
 USERNAME = 'ubuntu'
