@@ -7,18 +7,18 @@ A simple Django application that file uploads directly to an Amazon S3 bucket.
 The following deployment setup is only meant as an example for those wishing to quickly deploy this application to a web server without necessarily understanding the code.
 
 You'll need the following installed before cloning the source code:
-x Python 2.7
-x [PyCrypto](https://www.dlitz.net/software/pycrypto/)
-x [PIP](http://pip.readthedocs.org/en/latest/installing.html)
+- Python 2.7
+- [PyCrypto](https://www.dlitz.net/software/pycrypto/)
+- [PIP](http://pip.readthedocs.org/en/latest/installing.html)
 
 You'll need to setup the following Amazon Web Services (AWS):
-x Launch an EC2 instance running Ubuntu Server (or some other Debian-based operating system)
-x Save the .pem key pair file for the EC2 instance as ~/.ssh/myserver.pem
-x Create an EC2 Security Group that has port 80 opened
-x Create an S3 bucket and make note of its name.
-x Generate an AWS Access Key and Secret Access Key
-x (Optional) An elastic IP associated with the VM
-x (Optional) A DNS entry pointing to the elastic IP address
+- Launch an EC2 instance running Ubuntu Server (or some other Debian-based operating system)
+- Save the .pem key pair file for the EC2 instance as ~/.ssh/myserver.pem
+- Create an EC2 Security Group that has port 80 opened
+- Create an S3 bucket and make note of its name.
+- Generate an AWS Access Key and Secret Access Key
+- (Optional) An elastic IP associated with the VM
+- (Optional) A DNS entry pointing to the elastic IP address
 
 Now you're ready to checkout and deploy the code to your server.
 
