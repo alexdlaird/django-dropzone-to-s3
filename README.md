@@ -20,7 +20,7 @@ You'll need to setup the following [Amazon Web Services (AWS)](http://aws.amazon
 - (Optional) An elastic IP associated with the VM
 - (Optional) A DNS entry pointing to the elastic IP address
 
-Now you're ready to checkout and deploy the code to your server.
+Now you're ready to checkout, configure, and deploy the code to your EC2 server.
 
 - Clone the source code
 - Modify the variables at the bottom of djangodropzonetos3/settings.py to customize the application
