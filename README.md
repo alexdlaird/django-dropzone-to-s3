@@ -28,6 +28,3 @@ Now you're ready to checkout, configure, and deploy the code to your EC2 server.
 - Modify the variables at the top of fabfile.py to point to your EC2 instance's IP or domain
 - From the Command Line at the root of the cloned source, execute "pip install -r reqs.txt"
 - From the Command Line at the root of the cloned source, execute "fab deploy"
-
-# More Information
-If you're looking for a more detailed tutorial on the code and deployment, check out the full tutorial found here: http://www.alexlaird.com/2014/08/django-dropzone-uploader
