@@ -23,6 +23,7 @@ You'll need to setup the following [Amazon Web Services (AWS)](http://aws.amazon
 Now you're ready to checkout, configure, and deploy the code to your EC2 server.
 
 - Fork the repository on GitHub
+- Clone your forked repository
 - Modify the variables at the bottom of djangodropzonetos3/settings.py to customize the application
 - You must specify valid values for AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_STORAGE_BUCKET_NAME in settings.py
 - Modify the HOSTNAME variables at the top of fabfile.py to point to your EC2 instance's DNS entry
