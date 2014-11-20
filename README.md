@@ -17,14 +17,15 @@ You'll need to setup the following [Amazon Web Services (AWS)](http://aws.amazon
 - Create an EC2 Security Group that has port 80 opened
 - [Create an S3 bucket](http://aws.amazon.com/s3/).
 - Generate an AWS Access Key and Secret Access Key
-- (Optional) An elastic IP associated with the VM
-- (Optional) A DNS entry pointing to the elastic IP address
+- (Optional) Create an elastic IP and associate it with the EC2 instace you created
+- (Optional) Create a DNS entry of your choosing to point to the elastic IP (AWS will generate their own DNS entry that you can also use, if you don't have your own domain name)
 
 Now you're ready to checkout, configure, and deploy the code to your EC2 server.
 
-- Clone the source code
+- Fork the source code
 - Modify the variables at the bottom of djangodropzonetos3/settings.py to customize the application
 - You must specify valid values for AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_STORAGE_BUCKET_NAME in settings.py
-- Modify the variables at the top of fabfile.py to point to your EC2 instance's IP or domain
+- Modify the HOSTNAME variables at the top of fabfile.py to point to your EC2 instance's DNS entry
+- Modify the REPO_URL variable at the top of fabfile.py to point to your fork of the repository
 - From the Command Line at the root of the cloned source, execute "pip install -r reqs.txt"
 - From the Command Line at the root of the cloned source, execute "fab deploy"
