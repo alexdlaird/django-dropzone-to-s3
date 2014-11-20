@@ -14,6 +14,10 @@ from fabric.operations import sudo, run, put
 from fabric.state import env
 from fabric.network import ssh
 
+__author__ = 'Alex Laird'
+__copyright__ = 'Copyright 2014, Alex Laird'
+__version__ = '0.0.1'
+
 # Modify these variables to configure the server to which you're deploying
 PROJECT_NAME = 'django-dropzone-to-s3'
 REPO_URL = 'git@github.com:alexdlaird/django-dropzone-to-s3.git'

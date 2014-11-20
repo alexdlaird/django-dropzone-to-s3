@@ -9,6 +9,10 @@ from django.conf import settings
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 
+__author__ = 'Alex Laird'
+__copyright__ = 'Copyright 2014, Alex Laird'
+__version__ = '0.0.1'
+
 
 def home(request):
     response = render_to_response('home.html', {'SITE_TITLE': settings.SITE_TITLE, 'host': request.get_host()},
